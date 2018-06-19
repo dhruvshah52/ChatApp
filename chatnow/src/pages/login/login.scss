@@ -1,0 +1,19 @@
+page-login {
+    ion-content{
+        background: rgb(34,193,195) !important;
+        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)!important;
+        
+        ion-icon{
+            color: color($colors, secondary);
+            font-size: 6em !important;
+        }
+        
+        ion-col{
+            margin-top: 50% !important;
+        }
+        ion-card{
+            border-radius: 20px !important;
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;
+        }
+    }   
+}

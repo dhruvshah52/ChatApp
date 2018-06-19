@@ -1,0 +1,21 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row >
+      <ion-col text-center>
+        <ion-icon name="md-chatbubbles"></ion-icon>
+        <ion-card padding>
+          <ion-item>
+            <ion-input placeholder="Username" clearInput></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Password" clearInput></ion-input>
+          </ion-item>
+          <button ion-button round full margin-top color="secondary" (click)="OnLogin()">Login</button>
+          <p text-center margin-top>New Account?
+            <a (click)="presentModal()">Sign Up</a>
+          </p>
+        </ion-card>
+      </ion-col>
+    </ion-row>  
+  </ion-grid>
+</ion-content>
