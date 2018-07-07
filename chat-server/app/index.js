@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
     );
 });
 
-var HOST = '192.168,1.165';
+var HOST = '192.168.1.165';
 var PORT = 3000;
 
 http.listen(PORT, () =>

@@ -1,21 +1,55 @@
 <ion-content padding>
-  <ion-grid>
-    <ion-row >
-      <ion-col text-center>
-        <ion-icon name="md-chatbubbles"></ion-icon>
-        <ion-card padding>
-          <ion-item>
-            <ion-input placeholder="Username" clearInput></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input placeholder="Password" clearInput></ion-input>
-          </ion-item>
-          <button ion-button round full margin-top color="secondary" (click)="OnLogin()">Login</button>
-          <p text-center margin-top>New Account?
-            <a (click)="presentModal()">Sign Up</a>
-          </p>
-        </ion-card>
-      </ion-col>
-    </ion-row>  
-  </ion-grid>
+	<ion-grid>
+		<ion-row>
+			<ion-col text-center>
+				<ion-icon name="md-chatbubbles"></ion-icon>
+				<ion-card padding>
+					<form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+						<ion-list inset>
+
+							<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
+								<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+							</ion-item>
+
+							<div ngxErrors="email" #emailErrors="ngxErrors">
+								<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">It should be a valid email</div>
+							</div>
+
+							<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+								<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+							</ion-item>
+
+							<div ngxErrors="password" #passwordErrors="ngxErrors">
+								<div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 5 characters</div>
+							</div>
+						</ion-list>
+
+						<div padding-horizontal>
+							<div class="form-error">{{loginError}}</div>
+
+							<button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
+							<div class="login-footer">
+								<p>
+									<a href="#">Forgot password?</a>
+								</p>
+							</div>
+
+							<ion-list>
+
+								<button ion-button icon-left block clear (click)="loginWithGoogle()">
+									<ion-icon name="logo-google"></ion-icon>
+									Log in with Google
+								</button>
+								<p>If you're a new user, please sign up.</p>
+								<button ion-button icon-left block clear (click)="presentModal()">
+									<ion-icon name="person-add"></ion-icon>
+									Sign up
+								</button>
+							</ion-list>
+						</div>
+					</form>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>
